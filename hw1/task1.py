@@ -13,14 +13,21 @@ Online resources consulted:
 """
 
 def merge_dictionaries(dicts: list[dict[str, int]]) -> dict[str, int]:
-    """
-    Merge a list of dictionaries into a single dictionary,
-    where each key maps to the sum of the values of that
-    key in the provided dictionaries.
+   """
+   Merge a list of dictionaries into a single dictionary,
+   where each key maps to the sum of the values of that
+   key in the provided dictionaries.
 
-    Args:
-        dicts: A list of dictionaries to merge.
+   Args:
+      dicts: A list of dictionaries to merge.
 
-    Returns: Merged dictionary
-    """
-    raise NotImplementedError("todo: merge_dictionaries")
+   Returns: Merged dictionary
+   """
+   new_dict: dict[str,int] = {}
+   for dict in dicts:
+      for i in dict.items():
+         if i[0] in new_dict.keys():
+            new_dict[i[0]] += i[1]
+         else:
+            new_dict[i[0]] = i[1]
+   return new_dict

@@ -23,7 +23,7 @@ class Card:
     respectively.
     """
 
-    def __init__(self, features):
+    def __init__(self, features: dict[str,str]) -> None:
         """
         Constructor. Initializes the card with the provided features.
 
@@ -41,7 +41,7 @@ class Card:
         """
         self.features = features.copy()
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Returns a string representation of the card.
         """
@@ -51,7 +51,7 @@ class Card:
 
         return s
 
-    def set_feature(self, feature, value):
+    def set_feature(self, feature: str, value: str) -> None:
         """
         Set the value of a feature on the card.
 
@@ -66,7 +66,7 @@ class Card:
 
         self.features[feature] = value
 
-    def get_feature(self, feature):
+    def get_feature(self, feature:str) -> str:
         """
         Get the value of a feature on the card.
 
@@ -79,7 +79,7 @@ class Card:
             raise ValueError(f"Feature '{feature}' not in card")
         return self.features[feature]
 
-    def common_features(self, other_features):
+    def common_features(self, other_features: dict[str,str]) -> dict[str,str]: 
         """
         Find the common features between this card and some given features.
 
@@ -104,7 +104,7 @@ class Card:
                 common[feature] = self.features[feature]
         return common
 
-    def compatible(self, other):
+    def compatible(self, other: "Card") -> bool:
         """
         Determine if this card is compatible with another card.
 

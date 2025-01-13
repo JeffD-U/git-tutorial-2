@@ -30,7 +30,14 @@ def test_task4_compatible() -> None:
     Your test must check that calling are_compatible with these cards
     returns the correct value.
     """
-    raise NotImplementedError("todo: test_compatible")
+    card1 = Card({"color": "red", "shape": "circle", "number": "3"})
+    card2 = Card({"color": "red", "shape": "square", "number": "1"})
+    card3 = Card({"color": "red", "shape": "triangle", "number": "2"})
+    card4 = Card({"color": "red", "shape": "pentagon", "number": "4"})
+    actual = are_compatible([card1,card2,card3,card4])
+    assert (actual is not None)
+    assert (actual[0] == "color" or actual[1] == "red")
+        
 
 
 def test_task4_multiple_common_features() -> None:
@@ -39,16 +46,21 @@ def test_task4_multiple_common_features() -> None:
     (and are thus not compatible). Check that are_compatible returns
     None for these cards.
     """
-    raise NotImplementedError("todo: test_multiple_common_features")
-
+    card1 = Card({"color": "red", "shape": "circle", "number": "3"})
+    card2 = Card({"color": "red", "shape": "circle", "number": "1"})
+    card3 = Card({"color": "red", "shape": "circle", "number": "2"})
+    card4 = Card({"color": "red", "shape": "circle", "number": "4"})
+    actual = are_compatible([card1,card2,card3,card4])
+    assert (actual is None)
 
 def test_task4_single_card() -> None:
     """
     Write a test with a single card, and check that are_compatible
     returns None for this card.
     """
-    raise NotImplementedError("todo: test_single_card")
-
+    card1 = Card({"color": "red", "shape": "circle", "number": "3"})
+    actual = are_compatible([card1])
+    assert (actual is None)
 
 def test_task4_pairwise_compatible() -> None:
     """
@@ -64,4 +76,14 @@ def test_task4_pairwise_compatible() -> None:
     on A and B, A and C, and B and C, but returns None when called on A, B,
     and C.
     """
-    raise NotImplementedError("todo: test_pairwise_compatible")
+    cardA = Card({"color": "red", "shape": "circle", "number": "3"})
+    cardB = Card({"color": "red", "shape": "square", "number": "2"})
+    cardC = Card({"color": "blue", "shape": "circle", "number": "2"})
+    ABactual = are_compatible([cardA,cardB])
+    ACactual = are_compatible([cardA,cardC])
+    BCactual = are_compatible([cardB,cardC])
+    allactual = are_compatible([cardA,cardB,cardC])
+    assert ABactual == ("color","red")
+    assert ACactual == ("shape","circle")
+    assert BCactual == ("number","2")
+    assert allactual is None

@@ -15,15 +15,26 @@ Online resources consulted:
 from tree import TreeNode
 
 def increasing_paths(t: TreeNode) -> list[list[int]]:
-    """
-    Given a tree, produce a list of all root-to-leaf paths where the values
-    in the path are in increasing order.
+   """
+   Given a tree, produce a list of all root-to-leaf paths where the values
+   in the path are in increasing order.
 
-    Args:
-        t: Tree
+   Args:
+      t: Tree
 
-    Returns: List of all root-to-leaf paths (where each path is a list
-       of root-to-leaf values) where the values in the path are in increasing
-       order
-    """
-    raise NotImplementedError("todo: incrementing_paths")
+   Returns: List of all root-to-leaf paths (where each path is a list
+      of root-to-leaf values) where the values in the path are in increasing
+      order
+   """
+   #basecase
+   list1 = []
+   if t.is_leaf():
+      return [[t.value]]
+   #recursivecase
+   else:
+      for child in t.children:
+         if child.value > t.value:
+            for path in increasing_paths(child):
+               list1.append([t.value] + path)
+   return list1
+
